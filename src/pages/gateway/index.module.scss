@@ -1,0 +1,19 @@
+.card {
+  &-front {
+    transform: rotateY(0deg);
+    transition: transform 0.3s linear;
+    transition-delay: 0.3s;
+  }
+  &-back {
+    transform: rotateY(-90deg);
+    transition: transform 0.3s linear;
+  }
+  &:hover &-front {
+    transform: rotateY(90deg);
+    transition-delay: 0s;
+  }
+  &:hover &-back {
+    transform: rotateY(0deg);
+    transition-delay: 0.3s;
+  }
+}
