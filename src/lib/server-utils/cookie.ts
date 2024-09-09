@@ -51,7 +51,7 @@ export const returnSession = async (req: NextApiRequest, res: NextApiResponse, i
   const user = await getOneUserByUuid(id)
   setCookie(res, {
     name: tokenName,
-    value: signToken({ id, did: user?.did }),
+    value: signToken({ id }),
     options: {
       sameSite: 'lax',
       path: '/',

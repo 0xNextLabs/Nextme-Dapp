@@ -13,7 +13,7 @@ import {
   linea,
   gnosis,
   metis,
-  zkSync,
+  zksync,
   blast,
   scroll,
   mode,
@@ -34,9 +34,12 @@ import {
   optimismSepolia,
   arbitrumSepolia,
   bscTestnet,
-  zkSyncSepoliaTestnet,
+  polygonAmoy,
+  zksyncSepoliaTestnet,
   berachainTestnetbArtio,
-} from 'wagmi/chains'
+  auroraTestnet,
+  zetachainAthensTestnet,
+} from 'viem/chains'
 import { customChains } from './custom'
 
 export const chainIdToNetWork = (chainId: number): Chain => {
@@ -54,7 +57,7 @@ export const chainIdToNetWork = (chainId: number): Chain => {
     case 42161:
       return arbitrum as any
     case 324:
-      return zkSync as any
+      return zksync as any
     case 5000:
       return mantle as any
     case 169:
@@ -108,6 +111,8 @@ export const chainIdToNetWork = (chainId: number): Chain => {
       return arbitrumSepolia as any
     case 97:
       return bscTestnet as any
+    case 80002:
+      return polygonAmoy as any
     case 80084:
       return berachainTestnetbArtio
     case 5555:
@@ -117,7 +122,11 @@ export const chainIdToNetWork = (chainId: number): Chain => {
     case 81:
       return customChains.jocChain as any
     case 300:
-      return zkSyncSepoliaTestnet as any
+      return zksyncSepoliaTestnet as any
+    case 1313161555:
+      return auroraTestnet as any
+    case 7001:
+      return zetachainAthensTestnet as any
 
     case 1:
     default:

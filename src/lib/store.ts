@@ -5,7 +5,6 @@ import storage from 'redux-persist/lib/storage'
 import userReducer from '@/store/slice/user'
 import studioReducer from '@/store/slice/studio'
 import studioServerReducer from '@/store/slice/studioServer'
-import bioReducer from '@/store/slice/bio'
 
 import config from '@/config'
 
@@ -13,7 +12,6 @@ const reducers = combineReducers({
   user: userReducer,
   studio: studioReducer,
   studioServer: studioServerReducer,
-  bio: bioReducer,
 })
 
 const persistConfig = {

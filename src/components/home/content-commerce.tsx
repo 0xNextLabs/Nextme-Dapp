@@ -20,7 +20,7 @@ const ContentCommerce = () => {
         />
       </header>
       <ul className="mb-6 px-4 sm:px-8 md:px-12 lg:px-20 xl:px-36 2xl:px-44 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-        {['Social Pay Transaction', 'Member Subscription & NFC'].map((row, index) => (
+        {['Social Transaction', 'Member Subscription & NFC'].map((row, index) => (
           <li
             key={`commerce-index-${index + 1}`}
             className="flex items-center justify-center card border border-gray-100 p-8 rounded-2xl shadow cursor-pointer hover:scale-110 duration-300"

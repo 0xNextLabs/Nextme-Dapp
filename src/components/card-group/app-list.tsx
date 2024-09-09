@@ -17,7 +17,7 @@ interface AppListProps {
   name?: string
   setToast?: Function
   desc?: string
-  did?: string
+  uuid?: string
   cardName?: string
   avatar?: string
 }
@@ -46,7 +46,7 @@ const ShareAppList = ({
   name = '',
   setToast = () => {},
   desc,
-  did,
+  uuid,
   cardName,
   avatar,
 }: AppListProps) => {
@@ -65,7 +65,7 @@ const ShareAppList = ({
     })
     await drawCanvas({
       username,
-      did,
+      uuid,
       cardName,
       desc,
       avatar,

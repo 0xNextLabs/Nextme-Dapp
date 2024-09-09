@@ -8,9 +8,11 @@ import config from '@/config'
 
 const { prefix } = config
 
-export function getUserSessionSvc() {
+export const getUserSessionSvc = data => {
   return fetcher({
     url: 'api/auth/session',
+    method: 'post',
+    data,
   })
 }
 
@@ -104,7 +106,7 @@ export const signOut = async () => {
   const date = new Date()
   date.setTime(date.getTime() + -1 * 1000 * 60 * 60 * 24)
   document.cookie = tokenName + '=; ' + 'expires=' + date.toUTCString() + '; path=/'
-  document.cookie = `${prefix}-new-session-token=; ${'expires=' + date.toUTCString()}; path=/`
+  document.cookie = `${prefix}_new-session-token=; ${'expires=' + date.toUTCString()}; path=/`
   storage.removeItem(`persist:${prefix}`)
   localStorage.removeItem(`${prefix}.bottom_card.show`)
   location.href = `${location.origin}/gateway`
@@ -113,10 +115,10 @@ export const signOut = async () => {
 export const clearRestCookie = () => {
   const date = new Date()
   date.setTime(date.getTime() + -1 * 1000 * 60 * 60 * 24)
-  document.cookie = `${prefix}-pre-session-token=; ${'expires=' + date.toUTCString()}; path=/`
-  document.cookie = `${prefix}-nonce=; ${'expires=' + date.toUTCString()}; path=/`
-  document.cookie = `${prefix}-pkce.code_verifier=; ${'expires=' + date.toUTCString()}; path=/`
-  document.cookie = `${prefix}-state=; ${'expires=' + date.toUTCString()}; path=/`
+  document.cookie = `${prefix}_pre-session-token=; ${'expires=' + date.toUTCString()}; path=/`
+  document.cookie = `${prefix}_nonce=; ${'expires=' + date.toUTCString()}; path=/`
+  document.cookie = `${prefix}_pkce.code_verifier=; ${'expires=' + date.toUTCString()}; path=/`
+  document.cookie = `${prefix}_state=; ${'expires=' + date.toUTCString()}; path=/`
 }
 
 export function checkAdmin() {

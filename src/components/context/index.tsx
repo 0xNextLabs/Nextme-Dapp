@@ -16,9 +16,9 @@ import { TempContextProvider } from '@/components/context/temp'
 import { CacheRequestProvider } from '@/lib/api/cache'
 import { ProgressContainerProvider } from '@/components/widgets/progress'
 import { SnackbarProvider } from '@/components/context/snackbar'
+import { wagmiConfig } from '@/lib/chains'
 import { store } from '@/lib/store'
 
-import { wagmiConfig } from '@/config/common/wagmi'
 import config from '@/config'
 
 const { prefix, themes } = config

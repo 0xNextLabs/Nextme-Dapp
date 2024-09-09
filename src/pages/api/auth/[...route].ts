@@ -56,7 +56,7 @@ export default async function gateway(req: NextApiRequest, res: NextApiResponse)
     if (matchRoute(route, ['session'])) {
       const token = await getPayloadByToken(req)
 
-      if (token && token.id && token.did) {
+      if (token && token.id) {
         const user = await getOneUserByUuid(token.id)
 
         res.status(200).json({

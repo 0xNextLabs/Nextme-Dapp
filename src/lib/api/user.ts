@@ -285,7 +285,6 @@ export async function isValidUser(
   res: NextApiResponse,
   callback: (user: {
     username: string
-    did?: string
     uuid: string
     chain?: {
       default: {
@@ -300,7 +299,7 @@ export async function isValidUser(
   const token = await getPayloadByToken(req)
   if (token && token.id) {
     const user = await getOneUserByUuid(token.id)
-    if (user && user.did && user.username) {
+    if (user && user.uuid && user.username) {
       return await callback(user)
     } else {
       return edge

@@ -13,7 +13,7 @@ let title = 'Nextme',
     cdn_test: 'https://test-cdn.nextme.one',
   }
 
-let mission = 'Pay and Earn in Social Layer'
+let mission = 'Share and Earn in Social Layer'
 
 const config = {
   title,
@@ -54,7 +54,7 @@ const config = {
     bnb: '0xe3b1d32e43ce8d658368e2cbff95d57ef39be8a6',
   },
   pay: {
-    name: `${title} Social Pay`,
+    name: `${title} Social Portal`,
   },
   images: {
     placeholder: 'https://picsum.photos/256/256/?blur=5',

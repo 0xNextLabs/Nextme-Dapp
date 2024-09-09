@@ -8,19 +8,19 @@ export async function middleware(request: NextRequest) {
   const cookie = request.cookies.get(tokenName)
   const requestHeaders = new Headers(request.headers)
   const verify = await verifyAuth(request)
-  requestHeaders.set('x-is-login', verify?.did ? 'true' : 'false')
+  requestHeaders.set('x-is-login', verify?.id ? 'true' : 'false')
 
   if (pathname.startsWith('/gateway') && pathname.endsWith('/deck') && pathname.includes('gateway/deck')) {
     return NextResponse.redirect(new URL('/deck', request.url))
   }
   if (
-    !verify?.did &&
+    !verify?.id &&
     ['/studio', '/accounts', '/pay', '/messages', '/notifications', '/wallet'].find(row => pathname.startsWith(row))
   ) {
     return NextResponse.redirect(new URL('/gateway', request.url))
   }
   if (cookie && cookie.value !== 'null') {
-    if (pathname.startsWith('/gateway') && verify?.did && verify?.id) {
+    if (pathname.startsWith('/gateway') && verify?.id && verify?.id) {
       return NextResponse.redirect(new URL('/studio', request.url), { headers: requestHeaders })
     }
   }

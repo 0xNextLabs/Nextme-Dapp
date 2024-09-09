@@ -78,14 +78,14 @@ export async function getStaticProps(context) {
 export default function RenderUser({ user, studio }) {
   const router = useRouter()
   const userStudio = useStudioData()
-  const { loginStatus, loginLoading, did } = useIsUserLogin()
+  const { loginStatus, loginLoading, uuid } = useIsUserLogin()
 
   const isUserSelf = useMemo(() => {
     if (loginLoading) return true
-    if (!did) return false
-    if (did != user?.did) return false
+    if (!uuid) return false
+    if (uuid != user?.uuid) return false
     return true
-  }, [userStudio, loginLoading, did, studio, user])
+  }, [userStudio, loginLoading, uuid, studio, user])
 
   if (!isUserSelf || router.query?.newtab) {
     return <LandingLayout user={user} studio={studio} />

@@ -1,4 +1,4 @@
-## Nextme
+# Nextme
 
 https://nextme.one
 
@@ -8,15 +8,15 @@ https://nextme.one
 
 ## Slogan
 
-Pay and Earn in Social Layer.
+Share and Earn in Social Layer.
 
 ## Vision
 
-For Mass Adoption of Social Lifestyle and Payments to Enable the "Last Mile" of Onchain.
+For Mass Adoption of Social Lifestyle to Enable the "Last Mile" of Onchain.
 
 ## Values
 
-Nextme is a cross-chain（25+ evm chains and Solana chain etc.）and cross-platform decentralized social economy network.
+Nextme is a cross-chain（26+ EVM chains and Solana chain etc.）and cross-platform decentralized social economy network.
 
 **Share Moments, Social Payments.**
 
@@ -28,13 +28,22 @@ Creators, brands and fans, communities can better share streams, discover intere
 
 ![Nextme Wallet](https://utfs.io/f/c6750e28-54e8-419a-8b51-7a205e18082a-e0psdq.png)
 
+## Chains
+
+✅ **EVM**
+Ethereum、Solana、Base、Optimism、Arbitrum、BSC、Polygon、Polygon zkEVM、Metis、Sei、Scroll、Fuse、Celo、Aurora、Gnosis、zkSync、Avalanche、Mantle、Linea、Manta、Blast、Mode、Fantom、Rootsock、Berachain、ZetaChain...and 26+ chains.
+
+✅ **Solana**
+
+![Nextme Multichain](https://res.cloudinary.com/travary/image/upload/w_2000/v1/prd-akindo-public/communities/description-images/OVP39E0D8fNB4oow.jpg)
+
 ## More
 
 For more information, please visit our official portal.
 
 It contains quite full information about our products, values and partners. https://nextme.one/nextme.eth
 
-Beta network 6 months, 142000++ users worldwide, mainly creators (photographers/bloggers, etc.) and brands (corporations).
+Beta network 6 months, 142000+ users worldwide, mainly creators (photographers/bloggers, etc.) and brands (corporations).
 
 ![Nextme Pay](https://cdn.nextme.one/home/gateway/social_payments_02.png)
 
@@ -47,8 +56,8 @@ Also refers to getting some inspiration~
 
 🦄 Partners and Customers
 
-![Nextme Customers](https://cdn.nextme.one/static/website/Customers_1.jpg)
-![Nextme Customers](https://cdn.nextme.one/static/website/Customers_2.jpg)
+![Nextme Customers_01](https://cdn.nextme.one/static/website/Customers_1.jpg)
+![Nextme Customers_02](https://cdn.nextme.one/static/website/Customers_2.jpg)
 
 Our focus is on the【 Creator Economy 】【 Social Graph & Infra 】【 Pay & Mass Adoption 】
 
@@ -80,9 +89,9 @@ All the data you want to integrate and display for your fans.
 Dedicated to building payment middleware that makes socializing and living easier. Help creators and brands connect with fans and distribute community benefits.
 Buy or Sell commodities, derivatives and Send or Receive money on your favorite Social Bio.
 
-![Nextme Pay](https://cdn.nextme.one/home/gateway/social_payments_04.png)
+![Nextme Pay_01](https://cdn.nextme.one/home/gateway/social_payments_04.png)
 
-![Nextme Pay](https://cdn.nextme.one/home/gateway/social_payments_01_v2.png)
+![Nextme Pay_02](https://cdn.nextme.one/home/gateway/social_payments_01_v2.png)
 
 ### Nextme Feeds
 
@@ -90,6 +99,8 @@ Buy or Sell commodities, derivatives and Send or Receive money on your favorite 
 
 From Identity to Profiles (Portals) is a private domain with millions of pieces of data to open up for human-to-human connections, through interactions, content such as videos and the opportunity to receive a share of the creation revenue.
 Gallery（transitional state version） => Feeds.
+
+![Nextme Feeds_01](https://pbs.twimg.com/media/GEds4z-acAE_ztC?format=jpg)
 
 ### Nextme Open
 
@@ -99,7 +110,7 @@ Infrastructure for developers and organizations like 「Sign in with Nextme」, 
 
 ### Now.
 
-#### Just start your Social.
+**Just start your Social.**
 
 https://nextme.one/wallet
 

@@ -13,8 +13,8 @@ export default async function create_nft_html(req: NextApiRequest, res: NextApiR
     username,
     nickname,
     avatar = '',
-    intro = 'Nextme Social Pay',
-    did,
+    intro = 'Nextme Social',
+    uuid,
     host = 'nextme.one',
     type = 'custom',
     imgStyle = '',
@@ -53,7 +53,7 @@ export default async function create_nft_html(req: NextApiRequest, res: NextApiR
                         ${nickname}
                     </div>
                     <div class="intro-box line-clamp-4">
-                        ${intro || 'Nextme Social Pay'}
+                        ${intro || 'Nextme Social'}
                     </div>
                     <div class="avatar-box">
                         <div class="avatar-deepblue-box">
@@ -78,13 +78,13 @@ export default async function create_nft_html(req: NextApiRequest, res: NextApiR
                         <text text-rendering="optimizeSpeed">
                             <textPath startOffset="0%" fill="url(#user-info-grad1)" font-family="'Courier New', monospace"
                                 font-size="12px" xlink:href="#text-path-a">
-                                ${did}
+                                ${uuid}
                                 <animate additive="sum" attributeName="startOffset" from="0%" to="100%" begin="0s" dur="120s"
                                     repeatCount="indefinite" />
                             </textPath>
                             <textPath startOffset="12.5%" fill="url(#user-info-grad1)" font-family="'Courier New', monospace"
                                 font-size="12px" xlink:href="#text-path-a">
-                                ${did}
+                                ${uuid}
                                 <animate additive="sum" attributeName="startOffset" from="0%" to="100%" begin="0s" dur="120s"
                                     repeatCount="indefinite" />
                             </textPath>
@@ -105,13 +105,13 @@ export default async function create_nft_html(req: NextApiRequest, res: NextApiR
                         <text text-rendering="optimizeSpeed">
                             <textPath startOffset="0%" fill="url(#user-info-grad1)" font-family="'Courier New', monospace"
                                 font-size="12px" xlink:href="#text-path-a">
-                                ${did}
+                                ${uuid}
                                 <animate additive="sum" attributeName="startOffset" from="0%" to="100%" begin="0s" dur="120s"
                                     repeatCount="indefinite" />
                             </textPath>
                             <textPath startOffset="12.5%" fill="url(#user-info-grad1)" font-family="'Courier New', monospace"
                                 font-size="12px" xlink:href="#text-path-a">
-                                ${did}
+                                ${uuid}
                                 <animate additive="sum" attributeName="startOffset" from="0%" to="100%" begin="0s" dur="120s"
                                     repeatCount="indefinite" />
                             </textPath>
@@ -384,19 +384,19 @@ export default async function create_nft_html(req: NextApiRequest, res: NextApiR
     </text>
     <text text-rendering="optimizeSpeed">
         <textPath startOffset="-100%"  fill="url(#user-info-grad1)" font-family="'Courier New', monospace" font-size="12px" xlink:href="#text-path-a">
-${did}
+${uuid}
             <animate additive="sum" attributeName="startOffset" from="0%" to="100%" begin="0s" dur="30s" repeatCount="indefinite" />
         </textPath>
         <textPath startOffset="0%"  fill="url(#user-info-grad1)" font-family="'Courier New', monospace" font-size="12px" xlink:href="#text-path-a">
-${did}
+${uuid}
             <animate additive="sum" attributeName="startOffset" from="0%" to="100%" begin="0s" dur="30s" repeatCount="indefinite" />
         </textPath>
         <textPath startOffset="50%"  fill="url(#user-info-grad1)" font-family="'Courier New', monospace" font-size="12px" xlink:href="#text-path-a">
-${did}
+${uuid}
             <animate additive="sum" attributeName="startOffset" from="0%" to="100%" begin="0s" dur="30s" repeatCount="indefinite" />
         </textPath>
         <textPath startOffset="-50%"  fill="url(#user-info-grad1)" font-family="'Courier New', monospace" font-size="12px" xlink:href="#text-path-a">
-  ${did}
+  ${uuid}
             <animate additive="sum" attributeName="startOffset" from="0%" to="100%" begin="0s" dur="30s" repeatCount="indefinite" />
         </textPath>
     </text>

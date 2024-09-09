@@ -13,6 +13,10 @@ const { domains } = config
 
 let nativeSocialEmbeds = [
   {
+    type: 'CoindPay',
+    image: `${domains.cdn}/stream/brand/logo/dark.png`,
+  },
+  {
     type: 'Twitter',
     image: `${domains.cdn}/static/social/x.svg`,
   },
@@ -111,6 +115,14 @@ export { nativeSocialEmbeds }
 
 export function getCardUrlFactory(url) {
   if (!isUrl(url)) return
+  /**
+   * CoindPay
+   */
+  if (/^https?:\/\/coindpay\.xyz\/.+/.test(url)) {
+    return {
+      type: 'coindpay',
+    }
+  }
   /**
    * Twitter
    */

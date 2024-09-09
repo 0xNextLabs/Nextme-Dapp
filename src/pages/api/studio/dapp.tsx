@@ -11,7 +11,7 @@ import { tokenName } from '@/config/server/auth-config'
 
 async function dapp(req: NextApiRequest, res: NextApiResponse) {
   const token = await getPayloadByToken(req)
-  if (!token || !token?.id || !token?.did) {
+  if (!token || !token?.id) {
     res.setHeader(
       'set-cookie',
       serialize(tokenName, null, {

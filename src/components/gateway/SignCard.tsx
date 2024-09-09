@@ -215,9 +215,7 @@ const SignCard: FunctionComponent<SignCardProps> = ({ username, isSignIn = true 
                     <Typography component="h5">{item}</Typography>
                   </StepLabel>
                   <StepContent>
-                    {index === 0 && (
-                      <NmGlobalWallet commonClass="w-72 lg:w-80 h-12 rounded-3xl" hasConnectWallet={false} />
-                    )}
+                    {index === 0 && <NmGlobalWallet connectClass="w-72 lg:w-80 h-12" hasConnectWallet={false} />}
                     {index === 1 && (
                       <Box>
                         {userDomains && (

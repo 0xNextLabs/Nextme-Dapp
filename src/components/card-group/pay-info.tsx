@@ -285,7 +285,7 @@ export default function PayInfo() {
             <li>
               <NmIcon type="icon-alarm_clock" className="text-5xl sm:text-3xl -mt-2 mr-2" />
             </li>
-            <li className="max-sm:py-2">Limited time free mint Nextme Social Pay</li>
+            <li className="max-sm:py-2">Limited time free mint Nextme Social Portal</li>
             <li className="flex items-center">
               <span className="mx-2 line-through">0.01ETH</span>
               <Chip size="small" color="success" variant="outlined" label="100% OFF" />

@@ -31,7 +31,7 @@ const ContentGateway = () => {
               component="h4"
               className="py-6 text-2xl sm:text-2.5xl font-righteous text-transparent bg-clip-text bg-theconvo-gradient-001 bg-cover transition-all duration-700"
             >
-              For Mass Adoption of Social Lifestyle and Payments to Enable the "Last Mile" of Onchain.
+              For Mass Adoption of Social Lifestyle to Enable the "Last Mile" of Onchain.
             </Typography>
           </Box>
         }

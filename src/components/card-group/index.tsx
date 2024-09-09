@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import NextImage from 'next/image'
 import { QRCodeSVG } from 'qrcode.react'
@@ -20,19 +19,19 @@ interface IProps {
   svgRef?: any
   cardId?: string
   animated?: boolean
-  did?: string
+  uuid?: string
 }
 
 export default function NFTCard(
   {
-    cardId = '', // did card 唯一id
+    cardId = '', // card 唯一id
     customName = '', // 卡片用户名，自定义 profile?.name || username
     username = '', // 用户唯一用户域名用户名
     avatar: defaultAvatar, // 用户头像，3种类型
     intro, // 用户简介，默认为空
     svgRef,
     animated = true,
-    did = '',
+    uuid = '',
   }: IProps,
   ...props
 ) {
@@ -50,11 +49,8 @@ export default function NFTCard(
   const cardUserName = username || user?.username
   // 卡片昵称，落地页个性化数据 > 工作台 profile name > 用户唯一域名用户名id
   const cardName = customName || name || user?.username
-  // 用户唯一身份did
-  const cardDID = useMemo(
-    () => did || (user?.did as string) || 'did:next:0xFEBC175548cDEf35...C78DEe853DB5183e54',
-    [user?.did]
-  )
+  // 用户唯一身份
+  const cardDID = useMemo(() => uuid || (user?.uuid as string) || 'a9b33123-4a70-4b78-8015-2c73c8afadbc', [user?.uuid])
   useEffect(() => {
     let path =
       'M60 18 H 290 Q 320 18 320 69 V 530 Q 320 581 290 581 H 80 Q 20 581 20 530 V 58 Q 20 18 60 18H 290 Q 320 18 320 69 V 530 Q 320 581 290 581 H 80 Q 20 581 20 530 V 58 Q 20 18 60 18H 290 Q 320 18 320 69 V 530 Q 320 581 290 581 H 80 Q 20 581 20 530 V 58 Q 20 18 60 18H 290 Q 320 18 320 69 V 530 Q 320 581 290 581 H 80 Q 20 581 20 530 V 58 Q 20 18 60 18H 290 Q 320 18 320 69 V 530 Q 320 581 290 581 H 80 Q 20 581 20 530 V 58 Q 20 18 60 18H 290 Q 320 18 320 69 V 530 Q 320 581 290 581 H 80 Q 20 581 20 530 V 58 Q 20 18 60 18H 290 Q 320 18 320 69 V 530 Q 320 581 290 581 H 80 Q 20 581 20 530 V 58 Q 20 18 60 18H 290 Q 320 18 320 69 V 530 Q 320 581 290 581 H 80 Q 20 581 20 530 V 58 Q 20 18 60 18H 290 Q 320 18 320 69 V 530 Q 320 581 290 581 H 80 Q 20 581 20 530 V 58 Q 20 18 60 18H 290 Q 320 18 320 69 V 530 Q 320 581 290 581 H 80 Q 20 581 20 530 V 58 Q 20 18 60 18'
@@ -106,7 +102,7 @@ export default function NFTCard(
     bgImg.onload = () => {
       setBgLoading(false)
     }
-  }, [cardId, user.did])
+  }, [cardId, user.uuid])
 
   const userAvatar = useCallback(() => {
     const _src = defaultAvatar || avatar?.url || logo.dark

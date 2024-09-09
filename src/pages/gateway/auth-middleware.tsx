@@ -6,7 +6,7 @@ import queryString from 'query-string'
 import NmSpin from '@/components/nm-spin'
 import GatewayLayout from '@/components/layout/gateway'
 import Copyright from '@/components/copyright'
-import { checkOrCreateDIDSvc } from '@/services/did'
+import { getUserSessionSvc } from '@/services/auth'
 import { useInviteKey, useLocation } from '@/lib/hooks'
 import { oauthPopWindow } from '@/lib/class/oauthPopWindow'
 import { codes } from '@/lib/types/codes'
@@ -48,19 +48,19 @@ export default function AuthMiddleWare() {
     if (query) {
       setIsSignIn(Boolean(query?.isSignIn))
       if (query.actionType == '2001') {
-        const queryDID = async () => {
+        const userSession = async () => {
           if (!isFirst) {
             isFirst = true
-            const res = await checkOrCreateDIDSvc(query.from ? { from: query.from } : {})
+            const res = await getUserSessionSvc(query.from ? { from: query.from } : {})
             if (res) {
-              if (res?.did || res?.redirect) {
+              if (res?.uuid || res?.redirect) {
                 removeInviteKey()
                 router.push('/studio' + (query.from ? `?from=${query.from}` : ''))
               }
             }
           }
         }
-        queryDID()
+        userSession()
       }
     }
   }, [query, router])
@@ -70,7 +70,7 @@ export default function AuthMiddleWare() {
       return (
         <Box className="flex flex-col justify-center items-center w-80 xl:w-88">
           <NmSpin customClass="mt-10 mb-6" />
-          <h4 className="text-lg">Nextme Studio Launching . . .</h4>
+          <h4 className="text-lg">{`${title} Studio Launching . . .`}</h4>
         </Box>
       )
     }

@@ -39,7 +39,7 @@ export const getPayMetaData = async (
   nickname: string,
   avatar: string,
   intro: string,
-  did: string,
+  uuid: string,
   host: string,
   type = 'custom',
   image: string,
@@ -66,18 +66,17 @@ export const getPayMetaData = async (
     imgStyle = `transform: translate(${_transX}px,${_transY}px) scale(${_scale});
                   transform-origin: 0px 0px;`
   }
-  const data = await createNFTSvc({ username, nickname, avatar, intro, did, host, type, image, imgStyle })
+  const data = await createNFTSvc({ username, nickname, avatar, intro, uuid, host, type, image, imgStyle })
   const fileValue = data.message.animation_url
   const fileType = 'text/html'
-  const filename = `Nextme_Social_Pay_${username}.html`
+  const filename = `Nextme_Social_${username}.html`
   const htmlBlob = new Blob([fileValue], { type: 'text/html' })
   const htmlFile = new File([htmlBlob], filename, { type: fileType })
-  const animation_url = await s3UploadSvc(htmlFile, did)
-  let base64 = image.split(',')[1]
+  const animation_url = await s3UploadSvc(htmlFile, uuid)
+  const base64 = image.split(',')[1]
   const fileBlob = await base64ToBlob({ b64data: base64, contentType: 'image/png' })
   const fileName = `${new Date().getTime()}${username}`
   const iamgeFile = new File([fileBlob], fileName, { type: 'image/png' })
-  // const iamgeFile = new File([fileBlob], `${did}/nihao.png`, { type: 'image/png' })
 
   // Load client with specific private key
   const principal = Signer.parse(env.principalKey)
@@ -97,8 +96,8 @@ export const getPayMetaData = async (
     animation_url,
     attributes: [
       {
-        value: did,
-        trait_type: 'did',
+        value: uuid,
+        trait_type: 'uuid',
       },
       {
         value: username.length,

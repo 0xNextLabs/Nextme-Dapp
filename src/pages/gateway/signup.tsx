@@ -33,7 +33,7 @@ const SignUp: FunctionComponent<SignUpProps> = () => {
               <li className="px-8 md:px-12 lg:px-16">
                 <h1 className="font-righteous mb-4 text-3xl lg:text-4xl">
                   First,
-                  <p className="pt-6">Claim your unique did handle</p>
+                  <p className="pt-6">Claim your unique handle</p>
                 </h1>
                 <p className="text-black/50 pb-12">The good ones are still available!</p>
               </li>

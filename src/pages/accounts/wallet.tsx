@@ -13,6 +13,7 @@ import { labels, ChainsWalletCard } from '@/components/nm-chains-wallet'
 import { useEVMWalletConnect } from '@/lib/hooks'
 import { supportChains } from '@/lib/chains'
 import { getShortenMidDots } from '@/lib/utils'
+import { getActiveChain } from '@/lib/web3'
 
 export default function Wallet() {
   const evmWalletConnect = useEVMWalletConnect()
@@ -106,10 +107,7 @@ export default function Wallet() {
             <Box className="mb-8 flex flex-wrap gap-4">
               {row.type == 'Non-EVM' && solanaWallet?.readyState === 'Installed' && publicKey && (
                 <Box className="p-3 w-full  border rounded-xl flex items-center justify-between">
-                  <Avatar
-                    src="https://icons.llamao.fi/icons/chains/rsz_solana?w=100&h=100"
-                    className="skeleton rounded-full"
-                  />
+                  <Avatar src={getActiveChain({ name: 'Solana' })?.icon} className="skeleton rounded-full" />
                   <ul className="flex-1 px-4 pr-6">
                     <li className="font-semibold">Solana</li>
                     <li className="text-neutral-400 text-sm">{content}</li>
@@ -154,10 +152,7 @@ export default function Wallet() {
                       onClick={e => handleChainsAction(item, row.type)}
                     >
                       <Avatar
-                        src={
-                          item?.icon ||
-                          `https://icons.llamao.fi/icons/chains/rsz_${item?.name?.toLowerCase()}?w=100&h=100`
-                        }
+                        src={item?.icon || getActiveChain({ name: item?.name })?.icon}
                         className={classNames(
                           'bg-transparent shadow-sm hover:rotate-y-360 duration-1000 transition-all',
                           {

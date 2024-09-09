@@ -19,7 +19,7 @@ export default function CodeModal({ ...props }) {
   const code = router.query?.action_type as unknown as string
 
   useEffect(() => {
-    if (code && user?.did) {
+    if (code && user?.uuid) {
       const text = () => {
         switch (code) {
           case '1001':
@@ -119,7 +119,7 @@ export default function CodeModal({ ...props }) {
         })
       }
     }
-  }, [router, user?.did])
+  }, [router, user?.uuid])
 
   return <></>
 }

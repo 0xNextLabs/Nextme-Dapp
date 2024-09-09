@@ -6,14 +6,14 @@ import authMiddleware from '@/middleware/authMiddleware'
 
 async function account(req: NextApiRequest, res: NextApiResponse) {
   if (!req?.body?.uuid) {
-    res.status(502).json({ ok: false, message: 'did parameter could not be found' })
+    res.status(502).json({ ok: false, message: 'query parameter could not be found' })
   }
   const { uuid, address, chainId = 1, chainType = 'default' } = req.body
   const user = await getOneUserByUuid(uuid)
   try {
     if (user) {
       if (user?.chain?.[chainType]?.address) {
-        res.status(502).json({ ok: false, message: 'current wallet connected other did' })
+        res.status(502).json({ ok: false, message: 'current wallet connected other account' })
       } else {
         let users = await getDBCollection()
 

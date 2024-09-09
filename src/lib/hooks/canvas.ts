@@ -136,9 +136,9 @@ export const useCanvasImg = (isMintImg = false) => {
 
   const DynamicExampleInstance = useDynamicExampleContract(CONTRACT_ADDRESSES, true)
   let image = ''
-  let userDid = useMemo(
-    () => getShortenEndDots(user?.did || 'did:next:f19e06f2357a047735f235...7f40a102c1e31c27a304a8', 50).toUpperCase(),
-    [user?.did]
+  let UUID = useMemo(
+    () => getShortenEndDots(user?.uuid || 'a9b33123-4a70-4b78-8015-2c73c8afadbc', 50).toUpperCase(),
+    [user?.uuid]
   )
   let cardUserName = user?.username
   const drawCanvas = async ({
@@ -146,7 +146,7 @@ export const useCanvasImg = (isMintImg = false) => {
     isDownloadImg = false,
     username = '',
     progress = undefined,
-    did: _did = '',
+    uuid: _uuid = '',
     cardName: _cardName = '',
     desc: _desc = '',
     avatar: _avatar = '',
@@ -163,10 +163,10 @@ export const useCanvasImg = (isMintImg = false) => {
       CANVAS_HEIGHT = 770
     cardUserName = _cardName || cardUserName
     name = username || _cardName || name
-    userDid = getShortenEndDots(_did, 50).toUpperCase() || userDid
+    UUID = getShortenEndDots(_uuid, 50).toUpperCase() || UUID
     description = _desc || description
     avatar = _avatar || avatar
-    // let canvas = document.createElement('canvas')
+
     canvas.width = CANVAS_WIDTH
     canvas.height = CANVAS_HEIGHT
     const ctx = canvas.getContext('2d')
@@ -203,8 +203,7 @@ export const useCanvasImg = (isMintImg = false) => {
               textgrad.addColorStop(0, '#EEEEEE')
               ctx.fillStyle = textgrad
               ctx.font = '30px DM Sans'
-              // ctx.fillText(getShortenEndDots(name || cardUserName, 16), LEFT + 54, TOP + 225)
-              // textEllipsis(ctx, name || cardUserName, LEFT + 54, TOP + 240, 285, 24, 1)
+
               textEllipsis(ctx, name || cardUserName, LEFT + 54, TOP + 240, 285, 24, 2)
               ctx.fillStyle = textgrad
               ctx.font = '18px Dm Sans'
@@ -236,11 +235,11 @@ export const useCanvasImg = (isMintImg = false) => {
               let x = LEFT + 20,
                 y = TOP + 30 // 文字开始的坐标
               //左边DID样式
-              for (let i = 0; i < userDid.length; i++) {
+              for (let i = 0; i < UUID.length; i++) {
                 let isRow: boolean
                 let isRounded: boolean
                 let isColumn: boolean
-                const str = userDid.slice(i, i + 1).toString()
+                const str = UUID.slice(i, i + 1).toString()
                 isRow = str.match(/[A-Za-z0-9]/) && y < TOP + CARD_Y2 - 36 && x <= LEFT + 20
                 isRounded = y > TOP + CARD_Y2 - 36 && x <= LEFT + 20
                 isColumn = y > TOP + CARD_Y2 - 36 && x >= LEFT + 20 && x <= LEFT + 482
@@ -250,8 +249,8 @@ export const useCanvasImg = (isMintImg = false) => {
               }
               // 右边DID样式
               ;(x = LEFT + 372), (y = TOP + CARD_Y2 - 30)
-              for (let i = 0; i < userDid.length; i++) {
-                const str = userDid.slice(i, i + 1).toString()
+              for (let i = 0; i < UUID.length; i++) {
+                const str = UUID.slice(i, i + 1).toString()
                 let isRow: boolean
                 let isRounded: boolean
                 let isColumn: boolean
@@ -297,7 +296,7 @@ export const useCanvasImg = (isMintImg = false) => {
                           profile?.name || user?.username,
                           avatarUrl,
                           profile?.description || '',
-                          user.did,
+                          user.uuid,
                           process.env.NODE_ENV === 'development' ? `dev.${config.host}` : host,
                           profile?.avatar?.type || 'default',
                           image,
@@ -306,7 +305,7 @@ export const useCanvasImg = (isMintImg = false) => {
                           img.height
                         )
                         try {
-                          const data = await DynamicExampleInstance.mint(cid, user?.did)
+                          const data = await DynamicExampleInstance.mint(cid, user?.uuid)
                           progress?.setProgress('generate-img', 100)
                           resolve2(data)
                         } catch (error) {
@@ -320,8 +319,8 @@ export const useCanvasImg = (isMintImg = false) => {
                           const downloadBase64 = downloadImage.split(',')[1]
                           const fileBlob = await base64ToBlob({ b64data: downloadBase64, contentType: 'image/png' })
                           progress?.setProgress('generate-img', 50)
-                          const imageFile = new File([fileBlob], `${prefix}_pay_card.png`, { type: 'image/png' })
-                          const imageUrl = await s3UploadSvc(imageFile, user.uuid, `${prefix}_pay_card`)
+                          const imageFile = new File([fileBlob], `${prefix}_social_card.png`, { type: 'image/png' })
+                          const imageUrl = await s3UploadSvc(imageFile, user.uuid, `${prefix}_social_card`)
                           progress?.setProgress('generate-img', 100)
                           resolve({ imageUrl })
                           resolve2({ imageUrl })

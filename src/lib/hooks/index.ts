@@ -18,7 +18,7 @@ import { jwtVerify } from 'jose'
 import { setStudioInfo } from '@/store/slice/studio'
 import { getSpaceIDReverseNameSvc } from '@/services/common'
 import { deepClone, generateId, generateRandomString, getDefaultAvatarUrl, getRandomIntNum } from '@/lib/utils'
-import { chainIdToNetWork } from '@/lib/chains'
+import { chainIdToNetWork, payChains } from '@/lib/chains'
 import { IShareProps } from '@/lib/types/share'
 import { env } from '@/lib/types/env'
 import type { AppDispatch, AppState } from '../store'
@@ -68,7 +68,8 @@ export const useRouterStudio = () => sessionStorage.getItem(`${prefix}.bio.creat
 export const useIsUserLogin = () => {
   const [loginLoading, setLoading] = useState(true)
   const [loginStatus, setIsLogin] = useState(false)
-  const [did, setDid] = useState('')
+  const [uuid, setUUID] = useState('')
+
   useEffect(() => {
     ;(async () => {
       const userToken = document.cookie.match(new RegExp('(^| )' + tokenName + '=([^;]+)'))
@@ -76,8 +77,8 @@ export const useIsUserLogin = () => {
         const token = userToken[2]
         try {
           const verified = await jwtVerify(token, new TextEncoder().encode(AUTH_SECRET))
-          if (verified?.payload?.did) {
-            setDid(verified?.payload?.did as string)
+          if (verified?.payload?.id) {
+            setUUID(verified?.payload?.id as string)
             setIsLogin(true)
           } else {
             setIsLogin(false)
@@ -90,7 +91,7 @@ export const useIsUserLogin = () => {
     })()
   }, [document.cookie])
 
-  return { loginLoading, loginStatus, did }
+  return { loginLoading, loginStatus, uuid }
 }
 
 /**
@@ -519,14 +520,37 @@ export function useIntersectionObserver(
 export const useInviteKey = () => {
   const router = useRouter()
   const [inviteKey, setInviteKey] = useState(
-    String(router?.query?.from || '') || localStorage.getItem(`${prefix}-inviteKey`) || ''
+    String(router?.query?.from || '') || localStorage.getItem(`${prefix}_inviteKey`) || ''
   )
-  const removeInviteKey = () => localStorage.removeItem(`${prefix}-inviteKey`)
+  const removeInviteKey = () => localStorage.removeItem(`${prefix}_inviteKey`)
   useEffect(() => {
     if (router?.query?.from) {
       setInviteKey(String(router?.query?.from || ''))
-      localStorage.setItem(`${prefix}-inviteKey`, String(router?.query?.from))
+      localStorage.setItem(`${prefix}_inviteKey`, String(router?.query?.from))
     }
   }, [router?.query?.from])
   return { inviteKey, removeInviteKey }
+}
+
+/**
+ * payment chain switch
+ */
+
+export const useInitPayChainIndex = () => {
+  const router = useRouter()
+
+  const getInitialChainIndex = () => {
+    let chainName = router.query.chain
+
+    if (Array.isArray(chainName)) {
+      chainName = chainName[0] // 如果是数组，取第一个元素
+    }
+
+    chainName = chainName?.replace(/_/g, ' ').toLowerCase() // 将下划线替换为空格
+
+    const index = payChains.findIndex(chain => chain.name.toLowerCase() == chainName)
+    return index !== -1 ? index : 0 // 如果找不到匹配的 chain，默认返回 0
+  }
+
+  return getInitialChainIndex()
 }
